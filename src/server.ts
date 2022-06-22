@@ -48,10 +48,11 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
         let filtered_path = await filterImageFromURL(image_url);
 
         console.log("filtered_path: " + filtered_path)
-        res.send(filtered_path)
+        res.status(200).send(filtered_path)
         deleteLocalFiles([filtered_path]);
     } catch(e) {
         console.log("error: " + e)
+        res.status(400).send(e)
     }
 
   } );
